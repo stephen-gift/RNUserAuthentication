@@ -1,3 +1,5 @@
+import { Alert } from "react-native";
+
 const API_KEY = "AIzaSyCSGuYWsXbREZv7pGnDJMkrawiw-ClzCJk";
 async function authenticate(mode, email, password) {
   const URL = `https://identitytoolkit.googleapis.com/v1/accounts:${mode}?key=${API_KEY}`;
@@ -19,10 +21,12 @@ async function authenticate(mode, email, password) {
       console.log(data);
     } else {
       // Handle signup / Login error
-      console.error(data.error);
+      console.error("Firebase authentication error:", data.error);
+      Alert.alert("Authentication failed!", `${data.error.message}`);
     }
   } catch (error) {
-    console.error(error);
+    console.error("Fetch error:", error.message);
+    Alert.alert("Error Fetching data:", `${data.error.message}`);
   }
 }
 
