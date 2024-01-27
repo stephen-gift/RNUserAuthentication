@@ -12,7 +12,7 @@ function LoginScreen() {
     try {
       console.log("Attempting login...");
       await login(email, password);
-      // console.log("Login successful!");
+      console.log("Login successful!");
     } catch (error) {
       console.error("Login failed:", error.message);
     }

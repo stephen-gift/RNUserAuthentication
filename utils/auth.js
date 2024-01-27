@@ -26,7 +26,7 @@ async function authenticate(mode, email, password) {
     }
   } catch (error) {
     console.error("Fetch error:", error.message);
-    Alert.alert("Error Fetching data:", `${data.error.message}`);
+    Alert.alert("Error Fetching data:", `${error.message}`);
   }
 }
 
