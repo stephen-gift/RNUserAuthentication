@@ -19,6 +19,7 @@ function LoginScreen() {
       console.log("Login successful!");
     } catch (error) {
       console.error("Login failed:", error.message);
+      Alert.alert("Login Failed:", `${error.message}`);
     }
     setIsAuthenticating(false);
   }
