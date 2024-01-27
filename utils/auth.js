@@ -38,3 +38,23 @@ export function createUser(email, password) {
 export function login(email, password) {
   return authenticate("signInWithPassword", email, password);
 }
+
+export async function fetchData(token) {
+  try {
+    const response = await fetch(
+      `https://stephen-expensetracker-default-rtdb.europe-west1.firebasedatabase.app/message.json?auth=${token}`
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch data");
+    }
+
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error.message);
+    throw error;
+    // Handle error, e.g., set an error state
+  }
+}
