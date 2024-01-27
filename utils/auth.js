@@ -19,6 +19,8 @@ async function authenticate(mode, email, password) {
     if (response.ok) {
       // Signup / Login successful
       console.log(data);
+      const token = data.idToken;
+      return token;
     } else {
       // Handle signup / Login error
       console.error("Firebase authentication error:", data.error);
@@ -30,9 +32,9 @@ async function authenticate(mode, email, password) {
   }
 }
 
-export async function createUser(email, password) {
-  await authenticate("signUp", email, password);
+export function createUser(email, password) {
+  return authenticate("signUp", email, password);
 }
-export async function login(email, password) {
-  await authenticate("signInWithPassword", email, password);
+export function login(email, password) {
+  return authenticate("signInWithPassword", email, password);
 }

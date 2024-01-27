@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-const AuthContent = createContext({
+export const AuthContext = createContext({
   token: "",
   isAuthenticated: false,
   authenticate: () => {},
@@ -26,6 +26,6 @@ function AuthContentProvider({ children }) {
     authenticate: authenticate,
     logout: logout,
   };
-  return <AuthContent.Provider value={value}>{children}</AuthContent.Provider>;
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 export default AuthContentProvider;
