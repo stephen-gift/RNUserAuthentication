@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { fetchData } from "../utils/auth";
-import { AuthContext } from "../store/authContext";
+import { AuthContext } from "../store/authContext";import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 function WelcomeScreen() {
   const [fetchedMessage, setFetchedMessage] = useState(null);
@@ -16,6 +17,27 @@ function WelcomeScreen() {
     };
     fetchDataAsync();
   }, [token]);
+
+  // useEffect(() => {
+  //   async function fetchToken() {
+  //     try {
+  //       const storedToken = await AsyncStorage.getItem("token");
+  
+  //       // Check if the token is still valid or if it should be cleared
+  //       if (storedToken && isValidToken(storedToken)) {
+  //         setAuthToken(storedToken);
+  //       } else {
+  //         setAuthToken(""); // Clear the token state
+  //         AsyncStorage.removeItem("token"); // Remove the invalid token from AsyncStorage
+  //       }
+  //     } catch (error) {
+  //       console.error('Error fetching token:', error.message);
+  //       // Handle error, e.g., set an error state
+  //     }
+  //   }
+  
+  //   fetchToken();
+  // }, []);
 
   return (
     <View style={styles.rootContainer}>
